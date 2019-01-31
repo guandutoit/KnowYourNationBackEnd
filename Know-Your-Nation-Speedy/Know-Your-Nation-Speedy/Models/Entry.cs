@@ -22,6 +22,7 @@ namespace Know_Your_Nation_Speedy.Models
                 name = value;
             }
         }
+
     public string Email{
         get{
             return email;
@@ -30,6 +31,11 @@ namespace Know_Your_Nation_Speedy.Models
             email = value;
         }
     }
+
+
+
+        
+
 
            
     public int Id{

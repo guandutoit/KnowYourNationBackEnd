@@ -6,10 +6,12 @@ using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;
 using System.Net.Http;
-
+using Moq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Tests
 {
-    public class Tests{
+    //[TestClass]
+    public class Tests {
         private KYNSDemo kyns;
         private DbController dbController;
         private readonly MyDbContext _db;
@@ -17,35 +19,36 @@ namespace Tests
         Entry entry;
 
         [SetUp]
-     public void Setup()
-     {
-         kyns = new KYNSDemo();
-         dbController = new DbController(_db, _config);
-         entry = new Entry();
-     }
+        public void Setup()
+        {
+            kyns = new KYNSDemo();
+            dbController = new DbController(_db, _config);
+            entry = new Entry();
+        }
 
 
-        [TestCase(6,6)]
-    public void IdTest(int id,int outcome)
-    {
+        [TestCase(6, 6)]
+        public void IdTest(int id, int outcome)
+        {
 
-   int myId =  entry.Id = id;
+            int myId = entry.Id = id;
 
 
-    Assert.AreEqual(myId, outcome );
-    }
+            NUnit.Framework.Assert.AreEqual(myId, outcome);
+        }
 
-    [TestCase("", "dell")]
-    public void NameTest(string _name, string outcome)
-    {
-        string myName = entry.Name = _name;
-        Assert.AreEqual(myName, outcome);
-    }
+        [TestCase("", "dell")]
+        public void NameTest(string _name, string outcome)
+        {
+            string myName = entry.Name = _name;
+            NUnit.Framework.Assert.AreEqual(myName, outcome);
+        }
+
 
         public void EmailTest(string _email, string outcome)
         {
             string myEmail = entry.Email = _email;
-            Assert.AreEqual(myEmail, outcome);
+            NUnit.Framework.Assert.AreEqual(myEmail, outcome);
         }
 
 
@@ -55,8 +58,16 @@ namespace Tests
 
         //----------------------------------------Database tests-------------------------------------
 
+        [TestCase("string")]
+        public void MockTest(string email) {
+            DbController Obj = new DbController();
+
+            Mock<DbController> chk = new Mock<DbController>();
+            chk.Setup(x => x.DoesEmailExist(Obj,email)).Returns(true);
 
 
+            NUnit.Framework.Assert.AreEqual(Obj.InsertEmail(chk.Object), true);
+        }
 
 
 
@@ -67,7 +78,7 @@ namespace Tests
             //act
             var result = kyns.SpeedysFriend(name);
             //assert
-            Assert.AreEqual(result, outcome);
+            NUnit.Framework.Assert.AreEqual(result, outcome);
         }
         
 
