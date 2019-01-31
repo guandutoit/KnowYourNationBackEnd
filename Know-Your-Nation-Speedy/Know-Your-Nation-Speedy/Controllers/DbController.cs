@@ -23,6 +23,7 @@ namespace Know_Your_Nation_Speedy.Controllers
             _config = config;
         }
 
+
         // GET api/values
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Entry>>> Get()
