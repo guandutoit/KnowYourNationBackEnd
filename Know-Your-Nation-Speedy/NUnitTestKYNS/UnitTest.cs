@@ -9,21 +9,57 @@ using System.Net.Http;
 
 namespace Tests
 {
-    public class Tests
-    {
+    public class Tests{
         private KYNSDemo kyns;
         private DbController dbController;
         private readonly MyDbContext _db;
         private readonly IConfiguration _config;
+        Entry entry;
 
         [SetUp]
-        public void Setup()
+     public void Setup()
+     {
+         kyns = new KYNSDemo();
+         dbController = new DbController(_db, _config);
+         entry = new Entry();
+     }
+
+
+        [TestCase(6,6)]
+    public void IdTest(int id,int outcome)
+    {
+
+   int myId =  entry.Id = id;
+
+
+    Assert.AreEqual(myId, outcome );
+    }
+
+    [TestCase("", "dell")]
+    public void NameTest(string _name, string outcome)
+    {
+        string myName = entry.Name = _name;
+        Assert.AreEqual(myName, outcome);
+    }
+
+        public void EmailTest(string _email, string outcome)
         {
-            kyns = new KYNSDemo();
-            dbController = new DbController(_db, _config);
+            string myEmail = entry.Email = _email;
+            Assert.AreEqual(myEmail, outcome);
         }
 
-      
+
+
+
+
+
+        //----------------------------------------Database tests-------------------------------------
+
+
+
+
+
+
         [TestCase("Shakes", "Shakes")]
         public void Test(string name,string outcome)
         {
@@ -35,7 +71,7 @@ namespace Tests
         }
         
 
-        [TestCase]
+        /*[TestCase]
         public void Add_ValidObjectPassed_ReturnsCreatedResponse()
         {
             // Arrange
@@ -52,7 +88,7 @@ namespace Tests
 
             // Assert
             Assert.IsInstanceOf<CreatedAtActionResult>(createdResponse);
-        }
+        }*/
 
     }
     
