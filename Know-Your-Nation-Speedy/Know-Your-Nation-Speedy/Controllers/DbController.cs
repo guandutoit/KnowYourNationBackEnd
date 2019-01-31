@@ -15,6 +15,9 @@ namespace Know_Your_Nation_Speedy.Controllers
     [ApiController]
     public class DbController : ControllerBase
     {
+
+
+       
         private readonly MyDbContext _db;
         readonly IConfiguration _config;
         public DbController(MyDbContext context, IConfiguration config)
@@ -22,6 +25,11 @@ namespace Know_Your_Nation_Speedy.Controllers
             _db = context;
             _config = config;
         }
+
+        public DbController()
+        {
+        }
+
 
         // GET api/values
         [HttpGet]
@@ -62,6 +70,21 @@ namespace Know_Your_Nation_Speedy.Controllers
             _db.Entries.Remove(entry);
             await _db.SaveChangesAsync();
         }
+
+        public object InsertEmail(DbController Obj)
+        {
+            Obj.DoesEmailExist(null, null);
+            return true;
+           
+        }
+
+        
+
+        public virtual Boolean DoesEmailExist(DbController Obj, string Email)
+        { 
+            throw new NotImplementedException();
+        }
+
     }
 }
 
