@@ -2,94 +2,86 @@ using Know_Your_Nation_Speedy;
 using Know_Your_Nation_Speedy.Controllers;
 using Know_Your_Nation_Speedy.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Tests
 {
-    public class Tests{
-        private KYNSDemo kyns;
-        private DbController dbController;
-        private readonly MyDbContext _db;
-        private readonly IConfiguration _config;
-        Entry entry;
+    public class Tests
+    {
+       private DbController dbController;
+       private readonly MyDbContext _db;
+       private readonly IConfiguration _config;
 
         [SetUp]
-     public void Setup()
-     {
-         kyns = new KYNSDemo();
-         dbController = new DbController(_db, _config);
-         entry = new Entry();
-     }
-
-
-        [TestCase(6,6)]
-    public void IdTest(int id,int outcome)
-    {
-
-   int myId =  entry.Id = id;
-
-
-    Assert.AreEqual(myId, outcome );
-    }
-
-    [TestCase("", "dell")]
-    public void NameTest(string _name, string outcome)
-    {
-        string myName = entry.Name = _name;
-        Assert.AreEqual(myName, outcome);
-    }
-
-        public void EmailTest(string _email, string outcome)
+        public void Setup()
         {
-            string myEmail = entry.Email = _email;
-            Assert.AreEqual(myEmail, outcome);
-        }
-
-
-
-
-
-
-        //----------------------------------------Database tests-------------------------------------
-
-
-
-
-
-
-        [TestCase("Shakes", "Shakes")]
-        public void Test(string name,string outcome)
-        {
-            //assign
-            //act
-            var result = kyns.SpeedysFriend(name);
-            //assert
-            Assert.AreEqual(result, outcome);
+            dbController = new DbController(_db, _config);
         }
         
 
-        /*[TestCase]
-        public void Add_ValidObjectPassed_ReturnsCreatedResponse()
+        [TestCase(3)]
+        public void PostEntries(int input)
         {
+
             // Arrange
-            Entry testItem = new Entry()
-            {
-                Name = "Guinness Original 6 Pack",
-                Email = "email.co.za",
-                Password = "1234"
+            var options = new DbContextOptionsBuilder<MyDbContext>().UseInMemoryDatabase(databaseName:"ereader").Options;
+            var _db = new MyDbContext(options);
+             Seed(_db);
+            var query = new GetEntriesQuery(_db);
+            var result = query.Execute();
+
+            // Act
+           
+            // Assert
+            Assert.AreEqual(input,result.Count);
+        }
+
+        /*[TestCase]
+        public void GetEntries()
+        {
+
+            // Arrange
+            var options = new DbContextOptionsBuilder<MyDbContext>().UseInMemoryDatabase(databaseName: "ereader").Options;
+            var _db = new MyDbContext(options);
+            Seed(_db);
+            var query = new GetEntriesQuery(_db);
+            var result = query.Execute();
+
+            var entries = new[]
+           {
+                new Entry{ Name="Mpilo Mshengu",Email="mpilo@gmail.com",Password="1234"},
+                new Entry{ Name="Linda",Email="Linda@gmail.com",Password="4321"},
+                new Entry{ Name="Buhle",Email="Buhle@gmail.com",Password="4321"}
             };
 
             // Act
-            System.Threading.Tasks.Task createdResponse =  dbController.Post(testItem);
-           
 
             // Assert
-            Assert.IsInstanceOf<CreatedAtActionResult>(createdResponse);
+            Assert.AreEqual(entries,result);
         }*/
 
+
+
+        private void Seed(MyDbContext _db)
+        {
+            var entries = new[]
+            {
+                new Entry{ Name="Mpilo Mshengu",Email="mpilo@gmail.com",Password="1234"},
+                new Entry{ Name="Linda",Email="Linda@gmail.com",Password="4321"},
+                new Entry{ Name="Buhle",Email="Buhle@gmail.com",Password="4321"}
+            };
+            _db.Entries.AddRange(entries);
+            _db.SaveChanges();
+
+        }
+
+   
     }
     
 }
