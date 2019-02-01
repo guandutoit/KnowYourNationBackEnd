@@ -87,19 +87,7 @@ namespace Know_Your_Nation_Speedy.Controllers
             return Ok(entry);
         }
 
-        public object InsertEmail(DbController Obj)
-        {
-            Obj.DoesEmailExist(null, null);
-            return true;
-           
-        }
-
-        
-
-        public virtual Boolean DoesEmailExist(DbController Obj, string Email)
-        { 
-            throw new NotImplementedException();
-        }
+      
 
     }
 }
