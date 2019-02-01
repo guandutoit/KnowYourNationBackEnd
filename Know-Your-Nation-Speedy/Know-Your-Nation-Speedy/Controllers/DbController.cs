@@ -15,12 +15,19 @@ namespace Know_Your_Nation_Speedy.Controllers
     [ApiController]
     public class DbController : ControllerBase
     {
+
+
+       
         private readonly MyDbContext _db;
         readonly IConfiguration _config;
         public DbController(MyDbContext context, IConfiguration config)
         {
             _db = context;
             _config = config;
+        }
+
+        public DbController()
+        {
         }
 
 
@@ -79,6 +86,21 @@ namespace Know_Your_Nation_Speedy.Controllers
 
             return Ok(entry);
         }
+
+        public object InsertEmail(DbController Obj)
+        {
+            Obj.DoesEmailExist(null, null);
+            return true;
+           
+        }
+
+        
+
+        public virtual Boolean DoesEmailExist(DbController Obj, string Email)
+        { 
+            throw new NotImplementedException();
+        }
+
     }
 }
 

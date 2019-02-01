@@ -45,23 +45,19 @@ namespace Tests
         /*[TestCase]
         public void GetEntries()
         {
-
             // Arrange
             var options = new DbContextOptionsBuilder<MyDbContext>().UseInMemoryDatabase(databaseName: "ereader").Options;
             var _db = new MyDbContext(options);
             Seed(_db);
             var query = new GetEntriesQuery(_db);
             var result = query.Execute();
-
             var entries = new[]
            {
                 new Entry{ Name="Mpilo Mshengu",Email="mpilo@gmail.com",Password="1234"},
                 new Entry{ Name="Linda",Email="Linda@gmail.com",Password="4321"},
                 new Entry{ Name="Buhle",Email="Buhle@gmail.com",Password="4321"}
             };
-
             // Act
-
             // Assert
             Assert.AreEqual(entries,result);
         }*/
