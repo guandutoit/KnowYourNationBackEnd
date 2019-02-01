@@ -33,9 +33,19 @@ namespace Know_Your_Nation_Speedy.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Entry>> Get(int id)
+        public async Task<IActionResult> GetEntry([FromRoute] int id)
         {
-            return await _db.Entries.FindAsync(id);
+            var entry = await _db.Entries.SingleOrDefaultAsync(m => m.Id == id);
+            if (entry == null)
+            {
+                return NotFound();
+
+            }
+            _db.Entries.Remove(entry);
+            await _db.SaveChangesAsync();
+
+            return Ok(entry);
+            
         }
 
         // POST api/values
@@ -57,11 +67,18 @@ namespace Know_Your_Nation_Speedy.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task<IActionResult> DeleteEntry([FromRoute]int id)
         {
-            var entry = await _db.Entries.FindAsync(id);
+          
+            var entry = await _db.Entries.SingleOrDefaultAsync(m=> m.Id==id);
+            if (entry == null) {
+                return NotFound();
+
+            }
             _db.Entries.Remove(entry);
             await _db.SaveChangesAsync();
+
+            return Ok(entry);
         }
     }
 }
