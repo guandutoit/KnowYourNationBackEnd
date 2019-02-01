@@ -26,12 +26,7 @@ namespace Know_Your_Nation_Speedy.Controllers
             _config = config;
         }
 
-        public DbController()
-        {
-        }
-
-
-        // GET api/values
+          // GET api/values
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Entry>>> Get()
         {
