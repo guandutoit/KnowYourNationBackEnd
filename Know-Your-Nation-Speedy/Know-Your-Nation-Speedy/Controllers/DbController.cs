@@ -26,12 +26,7 @@ namespace Know_Your_Nation_Speedy.Controllers
             _config = config;
         }
 
-        public DbController()
-        {
-        }
-
-
-        // GET api/values
+          // GET api/values
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Entry>>> Get()
         {
@@ -87,19 +82,7 @@ namespace Know_Your_Nation_Speedy.Controllers
             return Ok(entry);
         }
 
-        public object InsertEmail(DbController Obj)
-        {
-            Obj.DoesEmailExist(null, null);
-            return true;
-           
-        }
-
-        
-
-        public virtual Boolean DoesEmailExist(DbController Obj, string Email)
-        { 
-            throw new NotImplementedException();
-        }
+      
 
     }
 }
