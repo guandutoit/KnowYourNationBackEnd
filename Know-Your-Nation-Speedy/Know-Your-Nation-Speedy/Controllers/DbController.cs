@@ -14,10 +14,8 @@ namespace Know_Your_Nation_Speedy.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class DbController : ControllerBase
-    {
+    { 
 
-
-       
         private readonly MyDbContext _db;
         readonly IConfiguration _config;
         public DbController(MyDbContext context, IConfiguration config)
@@ -30,44 +28,40 @@ namespace Know_Your_Nation_Speedy.Controllers
         {
         }
 
-
         // GET api/values
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Entry>>> Get()
+        public async Task<ActionResult<IEnumerable<Users>>> Get()
         {
-            return await _db.Entries.ToListAsync();
+            return await _db.UsersEntries.ToListAsync();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEntry([FromRoute] int id)
         {
-            var entry = await _db.Entries.SingleOrDefaultAsync(m => m.Id == id);
+            var entry = await _db.UsersEntries.SingleOrDefaultAsync(m => m.UsersId == id);
             if (entry == null)
             {
                 return NotFound();
-
             }
-            _db.Entries.Remove(entry);
+            _db.UsersEntries.Remove(entry);
             await _db.SaveChangesAsync();
-
             return Ok(entry);
-            
         }
 
         // POST api/values
         [HttpPost]
-        public async Task Post([FromBody] Entry value)
+        public async Task Post([FromBody] Users value)
         {
-            await _db.Entries.AddAsync(value);
+            await _db.UsersEntries.AddAsync(value);
             await _db.SaveChangesAsync();
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody] Entry value)
+        public async Task Put(int id, [FromBody] Users value)
         {
-            var entry = await _db.Entries.FindAsync(id);
+            var entry = await _db.UsersEntries.FindAsync(id);
             entry = value;
             await _db.SaveChangesAsync();
         }
@@ -77,31 +71,15 @@ namespace Know_Your_Nation_Speedy.Controllers
         public async Task<IActionResult> DeleteEntry([FromRoute]int id)
         {
           
-            var entry = await _db.Entries.SingleOrDefaultAsync(m=> m.Id==id);
+            var entry = await _db.UsersEntries.SingleOrDefaultAsync(m=> m.UsersId==id);
             if (entry == null) {
                 return NotFound();
 
             }
-            _db.Entries.Remove(entry);
+            _db.UsersEntries.Remove(entry);
             await _db.SaveChangesAsync();
-
             return Ok(entry);
         }
-
-        public object InsertEmail(DbController Obj)
-        {
-            Obj.DoesEmailExist(null, null);
-            return true;
-           
-        }
-
-        
-
-        public virtual Boolean DoesEmailExist(DbController Obj, string Email)
-        { 
-            throw new NotImplementedException();
-        }
-
     }
 }
 

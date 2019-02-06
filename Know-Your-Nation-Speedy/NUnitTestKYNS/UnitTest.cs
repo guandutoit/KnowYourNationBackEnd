@@ -6,98 +6,76 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
-using Moq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading.Tasks;
+
 namespace Tests
 {
     public class Tests
     {
-        private DbController dbController;
+       private DbController dbController;
        private readonly MyDbContext _db;
        private readonly IConfiguration _config;
-        Entry entry;
 
         [SetUp]
         public void Setup()
         {
             dbController = new DbController(_db, _config);
-            entry = new Entry();
         }
-
         
 
+        [TestCase(3)]
+        public void PostEntries(int input)
+        {
 
-            [TestCase(6, 6)]
-            public void IdTest(int id, int outcome)
-            {
-
-                int myId = entry.Id = id;
-
-
-                NUnit.Framework.Assert.AreEqual(myId, outcome);
-            }
-
-            [TestCase("", "dell")]
-            public void NameTest(string _name, string outcome)
-            {
-                string myName = entry.Name = _name;
-                NUnit.Framework.Assert.AreEqual(myName, outcome);
-            }
-
-
-            public void EmailTest(string _email, string outcome)
-            {
-                string myEmail = entry.Email = _email;
-                NUnit.Framework.Assert.AreEqual(myEmail, outcome);
-            }
-
-
-            [TestCase(2)]
-            public void NumberOfEntries(int input)
-            {
-                var options = new DbContextOptionsBuilder<MyDbContext>().UseInMemoryDatabase(databaseName: "ereader").Options;
-                var _db = new MyDbContext(options);
-                Seed(_db);
-                var query = new GetEntriesQuery(_db);
-                var result = query.Execute();
+            // Arrange
+            var options = new DbContextOptionsBuilder<MyDbContext>().UseInMemoryDatabase(databaseName:"ereader").Options;
+            var _db = new MyDbContext(options);
+             Seed(_db);
+            var query = new GetEntriesQuery(_db);
+            var result = query.UserExecute();
 
             // Act
-
+           
             // Assert
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(input, result.Count);
-            }
+            Assert.AreEqual(input,result.Count);
+        }
 
-
-
-            //----------------------------------------Database tests-------------------------------------
-
-            [TestCase("string")]
-            public void MockTest(string email)
-            {
-                DbController Obj = new DbController();
-
-                Mock<DbController> chk = new Mock<DbController>();
-                chk.Setup(x => x.DoesEmailExist(Obj, email)).Returns(true);
-
-
-                NUnit.Framework.Assert.AreEqual(Obj.InsertEmail(chk.Object), true);
-            }
-
-
-            private void Seed(MyDbContext _db)
-            {
-                var entries = new[]
-                {
+        /*[TestCase]
+        public void GetEntries()
+        {
+            // Arrange
+            var options = new DbContextOptionsBuilder<MyDbContext>().UseInMemoryDatabase(databaseName: "ereader").Options;
+            var _db = new MyDbContext(options);
+            Seed(_db);
+            var query = new GetEntriesQuery(_db);
+            var result = query.Execute();
+            var entries = new[]
+           {
                 new Entry{ Name="Mpilo Mshengu",Email="mpilo@gmail.com",Password="1234"},
                 new Entry{ Name="Linda",Email="Linda@gmail.com",Password="4321"},
                 new Entry{ Name="Buhle",Email="Buhle@gmail.com",Password="4321"}
             };
-                _db.Entries.AddRange(entries);
-                _db.SaveChanges();
+            // Act
+            // Assert
+            Assert.AreEqual(entries,result);
+        }*/
 
-            }
-        
+
+
+        private void Seed(MyDbContext _db)
+        {
+            var entries = new[]
+            {
+                new Users{ Name="Mpilo Mshengu",Email="mpilo@gmail.com",Password="1234"},
+                new Users{ Name="Linda",Email="Linda@gmail.com",Password="4321"},
+                new Users{ Name="Buhle",Email="Buhle@gmail.com",Password="4321"}
+            };
+            _db.UsersEntries.AddRange(entries);
+            _db.SaveChanges();
+
+        }
 
    
     }
