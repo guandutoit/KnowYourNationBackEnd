@@ -12,6 +12,6 @@ namespace Know_Your_Nation_Speedy.Models
         public string  Description{ get; set; }
         public string Address { get; set; }
         public DateTime date { get; set; }
-        public ICollection<UserEvents> userEvents { get; set; }
+        public ICollection<UserEvents> UserEvent { get; set; }
     }
 }

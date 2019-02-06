@@ -13,41 +13,41 @@ namespace Know_Your_Nation_Speedy.Models
             _db = db;
         }
 
-        public IList<Animation> AnimationExecute()
+        public IList<Animations> AnimationExecute()
         {
-            return _db.AnimationEntries.OrderBy(e => e.Name).ToList();
+            return _db.AnimationsEntries.OrderBy(e => e.Name).ToList();
         }
-        public IList<Article> ArticlesExecute()
+        public IList<Articles> ArticlesExecute()
         {
             return _db.ArticlesEntries.OrderBy(e => e.Name).ToList();
         }
-        public IList<Book> BookExecute()
+        public IList<Books> BookExecute()
         {
-            return _db.BookEntries.OrderBy(e => e.Name).ToList();
+            return _db.BooksEntries.OrderBy(e => e.Name).ToList();
         }
-        public IList<Comic> ComicExecute()
+        public IList<Comics> ComicExecute()
         {
-            return _db.ComicEntries.OrderBy(e => e.Name).ToList();
+            return _db.ComicsEntries.OrderBy(e => e.Name).ToList();
         }
-        public IList<Donation> DonationExecute()
+        public IList<Donations> DonationExecute()
         {
-            return _db.DonationEntries.OrderBy(e => e.Organization).ToList();
+            return _db.DonationsEntries.OrderBy(e => e.Organization).ToList();
         }
         public IList<Events> EventExecute()
         {
-            return _db.EventEntries.OrderBy(e => e.ProjectName).ToList();
+            return _db.EventsEntries.OrderBy(e => e.ProjectName).ToList();
         }
-        public IList<Order> OrderExecute()
+        public IList<Orders> OrderExecute()
         {
             return _db.OrdersEntries.OrderBy(e => e.TrackingNumber).ToList();
         }
-        public IList<Product> ProductExecute()
+        public IList<Products> ProductExecute()
         {
-            return _db.ProductEntries.OrderBy(e => e.Name).ToList();
+            return _db.ProductsEntries.OrderBy(e => e.Name).ToList();
         }
-        public IList<User> UserExecute()
+        public IList<Users> UserExecute()
         {
-            return _db.UserEntries.OrderBy(e => e.Name).ToList();
+            return _db.UsersEntries.OrderBy(e => e.Name).ToList();
         }
     }
 }

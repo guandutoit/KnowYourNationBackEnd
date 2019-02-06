@@ -9,10 +9,10 @@ namespace Know_Your_Nation_Speedy.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AnimationEntries",
+                name: "AnimationsEntries",
                 columns: table => new
                 {
-                    AnimationId = table.Column<int>(nullable: false)
+                    AnimationsId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     FileLocation = table.Column<string>(nullable: true),
@@ -21,14 +21,14 @@ namespace Know_Your_Nation_Speedy.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AnimationEntries", x => x.AnimationId);
+                    table.PrimaryKey("PK_AnimationsEntries", x => x.AnimationsId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "ArticlesEntries",
                 columns: table => new
                 {
-                    ArticleId = table.Column<int>(nullable: false)
+                    ArticlesId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     FileLocation = table.Column<string>(nullable: true),
@@ -39,14 +39,14 @@ namespace Know_Your_Nation_Speedy.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ArticlesEntries", x => x.ArticleId);
+                    table.PrimaryKey("PK_ArticlesEntries", x => x.ArticlesId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "BookEntries",
+                name: "BooksEntries",
                 columns: table => new
                 {
-                    BookId = table.Column<int>(nullable: false)
+                    BooksId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     FileLocation = table.Column<string>(nullable: true),
@@ -55,14 +55,14 @@ namespace Know_Your_Nation_Speedy.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookEntries", x => x.BookId);
+                    table.PrimaryKey("PK_BooksEntries", x => x.BooksId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ComicEntries",
+                name: "ComicsEntries",
                 columns: table => new
                 {
-                    ComicId = table.Column<int>(nullable: false)
+                    ComicsId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     FileLocation = table.Column<string>(nullable: true),
@@ -71,48 +71,11 @@ namespace Know_Your_Nation_Speedy.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ComicEntries", x => x.ComicId);
+                    table.PrimaryKey("PK_ComicsEntries", x => x.ComicsId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProductEntries",
-                columns: table => new
-                {
-                    ProductId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    CoverImageLocation = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Rating = table.Column<int>(nullable: false),
-                    Price = table.Column<double>(nullable: false),
-                    Type = table.Column<string>(nullable: true),
-                    QuantityOnHand = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductEntries", x => x.ProductId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserEntries",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Surname = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    MembershipType = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserEntries", x => x.UserId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "VolunteerEventEntries",
+                name: "EventsEntries",
                 columns: table => new
                 {
                     EventsId = table.Column<int>(nullable: false)
@@ -124,32 +87,69 @@ namespace Know_Your_Nation_Speedy.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VolunteerEventEntries", x => x.EventsId);
+                    table.PrimaryKey("PK_EventsEntries", x => x.EventsId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductsEntries",
+                columns: table => new
+                {
+                    ProductsId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    CoverImageLocation = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    Rating = table.Column<int>(nullable: false),
+                    Price = table.Column<double>(nullable: false),
+                    Type = table.Column<string>(nullable: true),
+                    QuantityOnHand = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductsEntries", x => x.ProductsId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UsersEntries",
+                columns: table => new
+                {
+                    UsersId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Surname = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    MembershipType = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UsersEntries", x => x.UsersId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AnimationsWatchedEntries",
                 columns: table => new
                 {
-                    AnimationId = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
+                    AnimationsId = table.Column<int>(nullable: false),
+                    UsersId = table.Column<int>(nullable: false),
                     WatchedStatus = table.Column<bool>(nullable: false),
                     Rating = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AnimationsWatchedEntries", x => new { x.UserId, x.AnimationId });
+                    table.PrimaryKey("PK_AnimationsWatchedEntries", x => new { x.UsersId, x.AnimationsId });
                     table.ForeignKey(
-                        name: "FK_AnimationsWatchedEntries_AnimationEntries_AnimationId",
-                        column: x => x.AnimationId,
-                        principalTable: "AnimationEntries",
-                        principalColumn: "AnimationId",
+                        name: "FK_AnimationsWatchedEntries_AnimationsEntries_AnimationsId",
+                        column: x => x.AnimationsId,
+                        principalTable: "AnimationsEntries",
+                        principalColumn: "AnimationsId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AnimationsWatchedEntries_UserEntries_UserId",
-                        column: x => x.UserId,
-                        principalTable: "UserEntries",
-                        principalColumn: "UserId",
+                        name: "FK_AnimationsWatchedEntries_UsersEntries_UsersId",
+                        column: x => x.UsersId,
+                        principalTable: "UsersEntries",
+                        principalColumn: "UsersId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -157,26 +157,26 @@ namespace Know_Your_Nation_Speedy.Migrations
                 name: "ArticlesReadEntries",
                 columns: table => new
                 {
-                    ArticleId = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
+                    ArticlesId = table.Column<int>(nullable: false),
+                    UsersId = table.Column<int>(nullable: false),
                     ReadStatus = table.Column<bool>(nullable: false),
                     GivenStatus = table.Column<bool>(nullable: false),
                     Rating = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ArticlesReadEntries", x => new { x.UserId, x.ArticleId });
+                    table.PrimaryKey("PK_ArticlesReadEntries", x => new { x.UsersId, x.ArticlesId });
                     table.ForeignKey(
-                        name: "FK_ArticlesReadEntries_ArticlesEntries_ArticleId",
-                        column: x => x.ArticleId,
+                        name: "FK_ArticlesReadEntries_ArticlesEntries_ArticlesId",
+                        column: x => x.ArticlesId,
                         principalTable: "ArticlesEntries",
-                        principalColumn: "ArticleId",
+                        principalColumn: "ArticlesId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ArticlesReadEntries_UserEntries_UserId",
-                        column: x => x.UserId,
-                        principalTable: "UserEntries",
-                        principalColumn: "UserId",
+                        name: "FK_ArticlesReadEntries_UsersEntries_UsersId",
+                        column: x => x.UsersId,
+                        principalTable: "UsersEntries",
+                        principalColumn: "UsersId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -184,25 +184,25 @@ namespace Know_Your_Nation_Speedy.Migrations
                 name: "BooksReadEntries",
                 columns: table => new
                 {
-                    BookId = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
+                    BooksId = table.Column<int>(nullable: false),
+                    UsersId = table.Column<int>(nullable: false),
                     ReadStatus = table.Column<bool>(nullable: false),
                     Rating = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BooksReadEntries", x => new { x.UserId, x.BookId });
+                    table.PrimaryKey("PK_BooksReadEntries", x => new { x.UsersId, x.BooksId });
                     table.ForeignKey(
-                        name: "FK_BooksReadEntries_BookEntries_BookId",
-                        column: x => x.BookId,
-                        principalTable: "BookEntries",
-                        principalColumn: "BookId",
+                        name: "FK_BooksReadEntries_BooksEntries_BooksId",
+                        column: x => x.BooksId,
+                        principalTable: "BooksEntries",
+                        principalColumn: "BooksId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BooksReadEntries_UserEntries_UserId",
-                        column: x => x.UserId,
-                        principalTable: "UserEntries",
-                        principalColumn: "UserId",
+                        name: "FK_BooksReadEntries_UsersEntries_UsersId",
+                        column: x => x.UsersId,
+                        principalTable: "UsersEntries",
+                        principalColumn: "UsersId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -210,47 +210,47 @@ namespace Know_Your_Nation_Speedy.Migrations
                 name: "ComicsReadEntries",
                 columns: table => new
                 {
-                    ComicId = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
+                    ComicsId = table.Column<int>(nullable: false),
+                    UsersId = table.Column<int>(nullable: false),
                     ReadStatus = table.Column<bool>(nullable: false),
                     Rating = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ComicsReadEntries", x => new { x.UserId, x.ComicId });
+                    table.PrimaryKey("PK_ComicsReadEntries", x => new { x.UsersId, x.ComicsId });
                     table.ForeignKey(
-                        name: "FK_ComicsReadEntries_ComicEntries_ComicId",
-                        column: x => x.ComicId,
-                        principalTable: "ComicEntries",
-                        principalColumn: "ComicId",
+                        name: "FK_ComicsReadEntries_ComicsEntries_ComicsId",
+                        column: x => x.ComicsId,
+                        principalTable: "ComicsEntries",
+                        principalColumn: "ComicsId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ComicsReadEntries_UserEntries_UserId",
-                        column: x => x.UserId,
-                        principalTable: "UserEntries",
-                        principalColumn: "UserId",
+                        name: "FK_ComicsReadEntries_UsersEntries_UsersId",
+                        column: x => x.UsersId,
+                        principalTable: "UsersEntries",
+                        principalColumn: "UsersId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "DonationEntries",
+                name: "DonationsEntries",
                 columns: table => new
                 {
-                    DonationId = table.Column<int>(nullable: false)
+                    DonationsId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Organization = table.Column<string>(nullable: true),
                     AmountDonated = table.Column<double>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<int>(nullable: true)
+                    UsersId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DonationEntries", x => x.DonationId);
+                    table.PrimaryKey("PK_DonationsEntries", x => x.DonationsId);
                     table.ForeignKey(
-                        name: "FK_DonationEntries_UserEntries_UserId",
-                        column: x => x.UserId,
-                        principalTable: "UserEntries",
-                        principalColumn: "UserId",
+                        name: "FK_DonationsEntries_UsersEntries_UsersId",
+                        column: x => x.UsersId,
+                        principalTable: "UsersEntries",
+                        principalColumn: "UsersId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -258,21 +258,21 @@ namespace Know_Your_Nation_Speedy.Migrations
                 name: "OrdersEntries",
                 columns: table => new
                 {
-                    OrderId = table.Column<int>(nullable: false)
+                    OrdersId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     DateOrdered = table.Column<DateTime>(nullable: false),
                     TrackingNumber = table.Column<string>(nullable: true),
                     AddressToDeliever = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: true)
+                    UsersId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrdersEntries", x => x.OrderId);
+                    table.PrimaryKey("PK_OrdersEntries", x => x.OrdersId);
                     table.ForeignKey(
-                        name: "FK_OrdersEntries_UserEntries_UserId",
-                        column: x => x.UserId,
-                        principalTable: "UserEntries",
-                        principalColumn: "UserId",
+                        name: "FK_OrdersEntries_UsersEntries_UsersId",
+                        column: x => x.UsersId,
+                        principalTable: "UsersEntries",
+                        principalColumn: "UsersId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -280,23 +280,23 @@ namespace Know_Your_Nation_Speedy.Migrations
                 name: "VolunteerEntries",
                 columns: table => new
                 {
-                    EventId = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false)
+                    EventsId = table.Column<int>(nullable: false),
+                    UsersId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VolunteerEntries", x => new { x.UserId, x.EventId });
+                    table.PrimaryKey("PK_VolunteerEntries", x => new { x.UsersId, x.EventsId });
                     table.ForeignKey(
-                        name: "FK_VolunteerEntries_VolunteerEventEntries_EventId",
-                        column: x => x.EventId,
-                        principalTable: "VolunteerEventEntries",
+                        name: "FK_VolunteerEntries_EventsEntries_EventsId",
+                        column: x => x.EventsId,
+                        principalTable: "EventsEntries",
                         principalColumn: "EventsId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_VolunteerEntries_UserEntries_UserId",
-                        column: x => x.UserId,
-                        principalTable: "UserEntries",
-                        principalColumn: "UserId",
+                        name: "FK_VolunteerEntries_UsersEntries_UsersId",
+                        column: x => x.UsersId,
+                        principalTable: "UsersEntries",
+                        principalColumn: "UsersId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -304,66 +304,66 @@ namespace Know_Your_Nation_Speedy.Migrations
                 name: "ProductOrdersEntries",
                 columns: table => new
                 {
-                    OrderId = table.Column<int>(nullable: false),
-                    ProductId = table.Column<int>(nullable: false),
+                    OrdersId = table.Column<int>(nullable: false),
+                    ProductsId = table.Column<int>(nullable: false),
                     Quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductOrdersEntries", x => new { x.OrderId, x.ProductId });
+                    table.PrimaryKey("PK_ProductOrdersEntries", x => new { x.OrdersId, x.ProductsId });
                     table.ForeignKey(
-                        name: "FK_ProductOrdersEntries_OrdersEntries_OrderId",
-                        column: x => x.OrderId,
+                        name: "FK_ProductOrdersEntries_OrdersEntries_OrdersId",
+                        column: x => x.OrdersId,
                         principalTable: "OrdersEntries",
-                        principalColumn: "OrderId",
+                        principalColumn: "OrdersId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductOrdersEntries_ProductEntries_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "ProductEntries",
-                        principalColumn: "ProductId",
+                        name: "FK_ProductOrdersEntries_ProductsEntries_ProductsId",
+                        column: x => x.ProductsId,
+                        principalTable: "ProductsEntries",
+                        principalColumn: "ProductsId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AnimationsWatchedEntries_AnimationId",
+                name: "IX_AnimationsWatchedEntries_AnimationsId",
                 table: "AnimationsWatchedEntries",
-                column: "AnimationId");
+                column: "AnimationsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ArticlesReadEntries_ArticleId",
+                name: "IX_ArticlesReadEntries_ArticlesId",
                 table: "ArticlesReadEntries",
-                column: "ArticleId");
+                column: "ArticlesId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BooksReadEntries_BookId",
+                name: "IX_BooksReadEntries_BooksId",
                 table: "BooksReadEntries",
-                column: "BookId");
+                column: "BooksId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ComicsReadEntries_ComicId",
+                name: "IX_ComicsReadEntries_ComicsId",
                 table: "ComicsReadEntries",
-                column: "ComicId");
+                column: "ComicsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DonationEntries_UserId",
-                table: "DonationEntries",
-                column: "UserId");
+                name: "IX_DonationsEntries_UsersId",
+                table: "DonationsEntries",
+                column: "UsersId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrdersEntries_UserId",
+                name: "IX_OrdersEntries_UsersId",
                 table: "OrdersEntries",
-                column: "UserId");
+                column: "UsersId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductOrdersEntries_ProductId",
+                name: "IX_ProductOrdersEntries_ProductsId",
                 table: "ProductOrdersEntries",
-                column: "ProductId");
+                column: "ProductsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_VolunteerEntries_EventId",
+                name: "IX_VolunteerEntries_EventsId",
                 table: "VolunteerEntries",
-                column: "EventId");
+                column: "EventsId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -381,7 +381,7 @@ namespace Know_Your_Nation_Speedy.Migrations
                 name: "ComicsReadEntries");
 
             migrationBuilder.DropTable(
-                name: "DonationEntries");
+                name: "DonationsEntries");
 
             migrationBuilder.DropTable(
                 name: "ProductOrdersEntries");
@@ -390,28 +390,28 @@ namespace Know_Your_Nation_Speedy.Migrations
                 name: "VolunteerEntries");
 
             migrationBuilder.DropTable(
-                name: "AnimationEntries");
+                name: "AnimationsEntries");
 
             migrationBuilder.DropTable(
                 name: "ArticlesEntries");
 
             migrationBuilder.DropTable(
-                name: "BookEntries");
+                name: "BooksEntries");
 
             migrationBuilder.DropTable(
-                name: "ComicEntries");
+                name: "ComicsEntries");
 
             migrationBuilder.DropTable(
                 name: "OrdersEntries");
 
             migrationBuilder.DropTable(
-                name: "ProductEntries");
+                name: "ProductsEntries");
 
             migrationBuilder.DropTable(
-                name: "VolunteerEventEntries");
+                name: "EventsEntries");
 
             migrationBuilder.DropTable(
-                name: "UserEntries");
+                name: "UsersEntries");
         }
     }
 }

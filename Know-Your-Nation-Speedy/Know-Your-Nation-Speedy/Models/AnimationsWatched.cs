@@ -6,10 +6,10 @@ namespace Know_Your_Nation_Speedy.Models
 {
     public class AnimationsWatched
     {
-        public int AnimationId { get; set; }
-        public int UserId { get; set; }
-        public  Animation animation{ get; set; }
-        public  User user { get; set; }
+        public int AnimationsId { get; set; }
+        public int UsersId { get; set; }
+        public  Animations Animation{ get; set; }
+        public  Users User { get; set; }
         public bool WatchedStatus { get; set; }
         public int Rating { get; set; }
     }

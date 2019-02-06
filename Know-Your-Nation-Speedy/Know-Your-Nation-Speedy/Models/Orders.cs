@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 namespace Know_Your_Nation_Speedy.Models
 {
-    public class Order
+    public class Orders
     {
-        public int OrderId { get; set; }
+        public int OrdersId { get; set; }
         public DateTime DateOrdered { get; set; }
         public string TrackingNumber { get; set; }
         public string AddressToDeliever { get; set; }
-        public User user { get; set; }
-        public ICollection<ProductOrders> productOrders { get; set; }
+        public Users User { get; set; }
+        public ICollection<ProductOrders> ProductOrder { get; set; }
     }
 }

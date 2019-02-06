@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Know_Your_Nation_Speedy.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20190206123622_InitialCreate")]
+    [Migration("20190206141027_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,9 +21,9 @@ namespace Know_Your_Nation_Speedy.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Animation", b =>
+            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Animations", b =>
                 {
-                    b.Property<int>("AnimationId")
+                    b.Property<int>("AnimationsId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -35,31 +35,31 @@ namespace Know_Your_Nation_Speedy.Migrations
 
                     b.Property<string>("Name");
 
-                    b.HasKey("AnimationId");
+                    b.HasKey("AnimationsId");
 
-                    b.ToTable("AnimationEntries");
+                    b.ToTable("AnimationsEntries");
                 });
 
             modelBuilder.Entity("Know_Your_Nation_Speedy.Models.AnimationsWatched", b =>
                 {
-                    b.Property<int>("UserId");
+                    b.Property<int>("UsersId");
 
-                    b.Property<int>("AnimationId");
+                    b.Property<int>("AnimationsId");
 
                     b.Property<int>("Rating");
 
                     b.Property<bool>("WatchedStatus");
 
-                    b.HasKey("UserId", "AnimationId");
+                    b.HasKey("UsersId", "AnimationsId");
 
-                    b.HasIndex("AnimationId");
+                    b.HasIndex("AnimationsId");
 
                     b.ToTable("AnimationsWatchedEntries");
                 });
 
-            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Article", b =>
+            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Articles", b =>
                 {
-                    b.Property<int>("ArticleId")
+                    b.Property<int>("ArticlesId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -75,16 +75,16 @@ namespace Know_Your_Nation_Speedy.Migrations
 
                     b.Property<string>("Nation");
 
-                    b.HasKey("ArticleId");
+                    b.HasKey("ArticlesId");
 
                     b.ToTable("ArticlesEntries");
                 });
 
             modelBuilder.Entity("Know_Your_Nation_Speedy.Models.ArticlesRead", b =>
                 {
-                    b.Property<int>("UserId");
+                    b.Property<int>("UsersId");
 
-                    b.Property<int>("ArticleId");
+                    b.Property<int>("ArticlesId");
 
                     b.Property<bool>("GivenStatus");
 
@@ -92,16 +92,16 @@ namespace Know_Your_Nation_Speedy.Migrations
 
                     b.Property<bool>("ReadStatus");
 
-                    b.HasKey("UserId", "ArticleId");
+                    b.HasKey("UsersId", "ArticlesId");
 
-                    b.HasIndex("ArticleId");
+                    b.HasIndex("ArticlesId");
 
                     b.ToTable("ArticlesReadEntries");
                 });
 
-            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Book", b =>
+            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Books", b =>
                 {
-                    b.Property<int>("BookId")
+                    b.Property<int>("BooksId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -113,31 +113,31 @@ namespace Know_Your_Nation_Speedy.Migrations
 
                     b.Property<string>("Name");
 
-                    b.HasKey("BookId");
+                    b.HasKey("BooksId");
 
-                    b.ToTable("BookEntries");
+                    b.ToTable("BooksEntries");
                 });
 
             modelBuilder.Entity("Know_Your_Nation_Speedy.Models.BooksRead", b =>
                 {
-                    b.Property<int>("UserId");
+                    b.Property<int>("UsersId");
 
-                    b.Property<int>("BookId");
+                    b.Property<int>("BooksId");
 
                     b.Property<int>("Rating");
 
                     b.Property<bool>("ReadStatus");
 
-                    b.HasKey("UserId", "BookId");
+                    b.HasKey("UsersId", "BooksId");
 
-                    b.HasIndex("BookId");
+                    b.HasIndex("BooksId");
 
                     b.ToTable("BooksReadEntries");
                 });
 
-            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Comic", b =>
+            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Comics", b =>
                 {
-                    b.Property<int>("ComicId")
+                    b.Property<int>("ComicsId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -149,31 +149,31 @@ namespace Know_Your_Nation_Speedy.Migrations
 
                     b.Property<string>("Name");
 
-                    b.HasKey("ComicId");
+                    b.HasKey("ComicsId");
 
-                    b.ToTable("ComicEntries");
+                    b.ToTable("ComicsEntries");
                 });
 
             modelBuilder.Entity("Know_Your_Nation_Speedy.Models.ComicsRead", b =>
                 {
-                    b.Property<int>("UserId");
+                    b.Property<int>("UsersId");
 
-                    b.Property<int>("ComicId");
+                    b.Property<int>("ComicsId");
 
                     b.Property<int>("Rating");
 
                     b.Property<bool>("ReadStatus");
 
-                    b.HasKey("UserId", "ComicId");
+                    b.HasKey("UsersId", "ComicsId");
 
-                    b.HasIndex("ComicId");
+                    b.HasIndex("ComicsId");
 
                     b.ToTable("ComicsReadEntries");
                 });
 
-            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Donation", b =>
+            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Donations", b =>
                 {
-                    b.Property<int>("DonationId")
+                    b.Property<int>("DonationsId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -183,13 +183,13 @@ namespace Know_Your_Nation_Speedy.Migrations
 
                     b.Property<string>("Organization");
 
-                    b.Property<int?>("UserId");
+                    b.Property<int?>("UsersId");
 
-                    b.HasKey("DonationId");
+                    b.HasKey("DonationsId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UsersId");
 
-                    b.ToTable("DonationEntries");
+                    b.ToTable("DonationsEntries");
                 });
 
             modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Events", b =>
@@ -208,12 +208,12 @@ namespace Know_Your_Nation_Speedy.Migrations
 
                     b.HasKey("EventsId");
 
-                    b.ToTable("VolunteerEventEntries");
+                    b.ToTable("EventsEntries");
                 });
 
-            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Order", b =>
+            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Orders", b =>
                 {
-                    b.Property<int>("OrderId")
+                    b.Property<int>("OrdersId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -223,18 +223,33 @@ namespace Know_Your_Nation_Speedy.Migrations
 
                     b.Property<string>("TrackingNumber");
 
-                    b.Property<int?>("UserId");
+                    b.Property<int?>("UsersId");
 
-                    b.HasKey("OrderId");
+                    b.HasKey("OrdersId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UsersId");
 
                     b.ToTable("OrdersEntries");
                 });
 
-            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Product", b =>
+            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.ProductOrders", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("OrdersId");
+
+                    b.Property<int>("ProductsId");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("OrdersId", "ProductsId");
+
+                    b.HasIndex("ProductsId");
+
+                    b.ToTable("ProductOrdersEntries");
+                });
+
+            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Products", b =>
+                {
+                    b.Property<int>("ProductsId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -252,29 +267,27 @@ namespace Know_Your_Nation_Speedy.Migrations
 
                     b.Property<string>("Type");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("ProductsId");
 
-                    b.ToTable("ProductEntries");
+                    b.ToTable("ProductsEntries");
                 });
 
-            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.ProductOrders", b =>
+            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.UserEvents", b =>
                 {
-                    b.Property<int>("OrderId");
+                    b.Property<int>("UsersId");
 
-                    b.Property<int>("ProductId");
+                    b.Property<int>("EventsId");
 
-                    b.Property<int>("Quantity");
+                    b.HasKey("UsersId", "EventsId");
 
-                    b.HasKey("OrderId", "ProductId");
+                    b.HasIndex("EventsId");
 
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductOrdersEntries");
+                    b.ToTable("VolunteerEntries");
                 });
 
-            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.User", b =>
+            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Users", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("UsersId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -290,113 +303,100 @@ namespace Know_Your_Nation_Speedy.Migrations
 
                     b.Property<string>("Surname");
 
-                    b.HasKey("UserId");
+                    b.HasKey("UsersId");
 
-                    b.ToTable("UserEntries");
-                });
-
-            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.UserEvents", b =>
-                {
-                    b.Property<int>("UserId");
-
-                    b.Property<int>("EventId");
-
-                    b.HasKey("UserId", "EventId");
-
-                    b.HasIndex("EventId");
-
-                    b.ToTable("VolunteerEntries");
+                    b.ToTable("UsersEntries");
                 });
 
             modelBuilder.Entity("Know_Your_Nation_Speedy.Models.AnimationsWatched", b =>
                 {
-                    b.HasOne("Know_Your_Nation_Speedy.Models.Animation", "animation")
-                        .WithMany("animationsWatched")
-                        .HasForeignKey("AnimationId")
+                    b.HasOne("Know_Your_Nation_Speedy.Models.Animations", "Animation")
+                        .WithMany("AnimationWatched")
+                        .HasForeignKey("AnimationsId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Know_Your_Nation_Speedy.Models.User", "user")
-                        .WithMany("animationsWatched")
-                        .HasForeignKey("UserId")
+                    b.HasOne("Know_Your_Nation_Speedy.Models.Users", "User")
+                        .WithMany("AnimationWatched")
+                        .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Know_Your_Nation_Speedy.Models.ArticlesRead", b =>
                 {
-                    b.HasOne("Know_Your_Nation_Speedy.Models.Article", "articles")
-                        .WithMany("articlesReads")
-                        .HasForeignKey("ArticleId")
+                    b.HasOne("Know_Your_Nation_Speedy.Models.Articles", "Article")
+                        .WithMany("ArticleRead")
+                        .HasForeignKey("ArticlesId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Know_Your_Nation_Speedy.Models.User", "user")
-                        .WithMany("articlesRead")
-                        .HasForeignKey("UserId")
+                    b.HasOne("Know_Your_Nation_Speedy.Models.Users", "User")
+                        .WithMany("ArticleRead")
+                        .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Know_Your_Nation_Speedy.Models.BooksRead", b =>
                 {
-                    b.HasOne("Know_Your_Nation_Speedy.Models.Book", "book")
-                        .WithMany("booksReads")
-                        .HasForeignKey("BookId")
+                    b.HasOne("Know_Your_Nation_Speedy.Models.Books", "Book")
+                        .WithMany("BookRead")
+                        .HasForeignKey("BooksId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Know_Your_Nation_Speedy.Models.User", "user")
-                        .WithMany("booksReads")
-                        .HasForeignKey("UserId")
+                    b.HasOne("Know_Your_Nation_Speedy.Models.Users", "User")
+                        .WithMany("BookRead")
+                        .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Know_Your_Nation_Speedy.Models.ComicsRead", b =>
                 {
-                    b.HasOne("Know_Your_Nation_Speedy.Models.Comic", "comic")
-                        .WithMany("comicsReads")
-                        .HasForeignKey("ComicId")
+                    b.HasOne("Know_Your_Nation_Speedy.Models.Comics", "Comic")
+                        .WithMany("ComicRead")
+                        .HasForeignKey("ComicsId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Know_Your_Nation_Speedy.Models.User", "user")
-                        .WithMany("comicsReads")
-                        .HasForeignKey("UserId")
+                    b.HasOne("Know_Your_Nation_Speedy.Models.Users", "User")
+                        .WithMany("ComicRead")
+                        .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Donation", b =>
+            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Donations", b =>
                 {
-                    b.HasOne("Know_Your_Nation_Speedy.Models.User", "user")
-                        .WithMany("donations")
-                        .HasForeignKey("UserId");
+                    b.HasOne("Know_Your_Nation_Speedy.Models.Users", "User")
+                        .WithMany("Donation")
+                        .HasForeignKey("UsersId");
                 });
 
-            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Order", b =>
+            modelBuilder.Entity("Know_Your_Nation_Speedy.Models.Orders", b =>
                 {
-                    b.HasOne("Know_Your_Nation_Speedy.Models.User", "user")
-                        .WithMany("orders")
-                        .HasForeignKey("UserId");
+                    b.HasOne("Know_Your_Nation_Speedy.Models.Users", "User")
+                        .WithMany("Order")
+                        .HasForeignKey("UsersId");
                 });
 
             modelBuilder.Entity("Know_Your_Nation_Speedy.Models.ProductOrders", b =>
                 {
-                    b.HasOne("Know_Your_Nation_Speedy.Models.Order", "orders")
-                        .WithMany("productOrders")
-                        .HasForeignKey("OrderId")
+                    b.HasOne("Know_Your_Nation_Speedy.Models.Orders", "Order")
+                        .WithMany("ProductOrder")
+                        .HasForeignKey("OrdersId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Know_Your_Nation_Speedy.Models.Product", "product")
-                        .WithMany("productOrders")
-                        .HasForeignKey("ProductId")
+                    b.HasOne("Know_Your_Nation_Speedy.Models.Products", "Product")
+                        .WithMany("ProductOrder")
+                        .HasForeignKey("ProductsId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Know_Your_Nation_Speedy.Models.UserEvents", b =>
                 {
-                    b.HasOne("Know_Your_Nation_Speedy.Models.Events", "events")
-                        .WithMany("userEvents")
-                        .HasForeignKey("EventId")
+                    b.HasOne("Know_Your_Nation_Speedy.Models.Events", "Event")
+                        .WithMany("UserEvent")
+                        .HasForeignKey("EventsId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Know_Your_Nation_Speedy.Models.User", "user")
-                        .WithMany("userEvents")
-                        .HasForeignKey("UserId")
+                    b.HasOne("Know_Your_Nation_Speedy.Models.Users", "User")
+                        .WithMany("UserEvent")
+                        .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
