@@ -34,7 +34,7 @@ namespace Tests
             var _db = new MyDbContext(options);
              Seed(_db);
             var query = new GetEntriesQuery(_db);
-            var result = query.Execute();
+            var result = query.UserExecute();
 
             // Act
            
@@ -68,11 +68,11 @@ namespace Tests
         {
             var entries = new[]
             {
-                new Entry{ Name="Mpilo Mshengu",Email="mpilo@gmail.com",Password="1234"},
-                new Entry{ Name="Linda",Email="Linda@gmail.com",Password="4321"},
-                new Entry{ Name="Buhle",Email="Buhle@gmail.com",Password="4321"}
+                new User{ Name="Mpilo Mshengu",Email="mpilo@gmail.com",Password="1234"},
+                new User{ Name="Linda",Email="Linda@gmail.com",Password="4321"},
+                new User{ Name="Buhle",Email="Buhle@gmail.com",Password="4321"}
             };
-            _db.Entries.AddRange(entries);
+            _db.UserEntries.AddRange(entries);
             _db.SaveChanges();
 
         }
