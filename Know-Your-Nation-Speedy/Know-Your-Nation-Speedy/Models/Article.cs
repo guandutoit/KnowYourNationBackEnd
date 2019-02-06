@@ -8,7 +8,6 @@ namespace Know_Your_Nation_Speedy.Models
     public class Article
     {
         public int ArticleId { get; set; }
-
         public string Name { get; set; }
         public string FileLocation { get; set; }
         public string CoverImageLocation { get; set; }

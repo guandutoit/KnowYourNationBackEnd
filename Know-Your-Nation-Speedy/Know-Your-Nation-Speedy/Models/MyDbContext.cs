@@ -15,7 +15,7 @@ namespace Know_Your_Nation_Speedy.Models
         public DbSet<User> UserEntries { get; set; }
         public DbSet<Donation> DonationEntries { get; set; }
         public DbSet<UserEvents> VolunteerEntries { get; set; }
-        public DbSet<Events> VolunteerEventEntries { get; set; }
+        public DbSet<Events> EventEntries { get; set; }
         public DbSet<Book> BookEntries { get; set; }
         public DbSet<Comic> ComicEntries { get; set; }
         public DbSet<Animation> AnimationEntries { get; set; }
@@ -43,7 +43,7 @@ namespace Know_Your_Nation_Speedy.Models
 
             modelBuilder.Entity<ArticlesRead>()
                 .HasKey(ar => new { ar.UserId, ar.ArticleId });
-            modelBuilder.Entity <ArticlesRead>()
+            modelBuilder.Entity<ArticlesRead>()
                 .HasOne(ar => ar.articles)
                 .WithMany(a => a.articlesReads)
                 .HasForeignKey(ar => ar.ArticleId);
@@ -75,7 +75,7 @@ namespace Know_Your_Nation_Speedy.Models
                 .HasForeignKey(cr => cr.UserId);
 
             modelBuilder.Entity<ProductOrders>()
-                .HasKey(po => new { po.OrderId, po.ProductId});
+                .HasKey(po => new { po.OrderId, po.ProductId });
             modelBuilder.Entity<ProductOrders>()
                 .HasOne(po => po.product)
                 .WithMany(p => p.productOrders)
@@ -96,13 +96,13 @@ namespace Know_Your_Nation_Speedy.Models
                 .WithMany(u => u.userEvents)
                 .HasForeignKey(ue => ue.UserId);
 
-         modelBuilder.Entity<User>()
-        .HasMany(c => c.orders)
-        .WithOne(e => e.user);
+            modelBuilder.Entity<User>()
+           .HasMany(c => c.orders)
+           .WithOne(e => e.user);
 
-         modelBuilder.Entity<User>()
-        .HasMany(c => c.donations)
-        .WithOne(e => e.user);
+            modelBuilder.Entity<User>()
+           .HasMany(c => c.donations)
+           .WithOne(e => e.user);
 
 
         }

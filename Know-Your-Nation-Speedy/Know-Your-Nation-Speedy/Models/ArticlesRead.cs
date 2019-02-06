@@ -6,7 +6,6 @@ namespace Know_Your_Nation_Speedy.Models
 {
     public class ArticlesRead
     {
-
         public int ArticleId { get; set; }
         public int UserId { get; set; }
         public Article articles { get; set; }

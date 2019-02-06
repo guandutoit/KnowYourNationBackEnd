@@ -7,9 +7,7 @@ namespace Know_Your_Nation_Speedy.Models
 {
     public class Book
     {
-        
         public int BookId { get; set; }
-
         public string Name { get; set; }
         public string FileLocation { get; set; }
         public string CoverImageLocation { get; set; }

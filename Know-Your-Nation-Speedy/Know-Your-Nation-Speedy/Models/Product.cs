@@ -8,7 +8,6 @@ namespace Know_Your_Nation_Speedy.Models
     public class Product
     {
         public int ProductId { get; set; }
-
         public string Name { get; set; }
         public string CoverImageLocation { get; set; }
         public string Description { get; set; }
@@ -16,7 +15,6 @@ namespace Know_Your_Nation_Speedy.Models
         public double Price { get; set; }
         public string Type { get; set; }//Know your nation or Speedy
         public int QuantityOnHand { get; set; }
-
         public ICollection<ProductOrders> productOrders { get; set; }
     }
 }

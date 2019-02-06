@@ -9,13 +9,9 @@ namespace Know_Your_Nation_Speedy.Models
     public class Donation
     {
         public int DonationId { get; set; }
-        
-       
         public string Organization { get; set; }
         public double AmountDonated { get; set; }
         public DateTime Date { get; set; }
-
         public User user { get; set; }
-
     }
 }
