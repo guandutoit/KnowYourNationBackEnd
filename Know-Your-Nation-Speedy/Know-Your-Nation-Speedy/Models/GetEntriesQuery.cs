@@ -51,3 +51,4 @@ namespace Know_Your_Nation_Speedy.Models
         }
     }
 }
+
