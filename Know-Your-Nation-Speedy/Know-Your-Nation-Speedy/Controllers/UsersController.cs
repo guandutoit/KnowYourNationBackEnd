@@ -10,12 +10,10 @@ using System.Threading.Tasks;
 
 namespace Know_Your_Nation_Speedy.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
-
         private readonly MyDbContext _db;
         readonly IConfiguration _config;
         public UsersController(MyDbContext context, IConfiguration config)
@@ -23,14 +21,12 @@ namespace Know_Your_Nation_Speedy.Controllers
             _db = context;
             _config = config;
         }
-
         // GET api/values
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Users>>> Get()
         {
             return await _db.UsersEntries.ToListAsync();
         }
-
         // GET api/values/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEntry([FromRoute] int id)
@@ -40,11 +36,9 @@ namespace Know_Your_Nation_Speedy.Controllers
             {
                 return NotFound();
             }
-            _db.UsersEntries.Remove(entry);
             await _db.SaveChangesAsync();
             return Ok(entry);
         }
-
         // POST api/values
         [HttpPost]
         public async Task Post([FromBody] Users value)
@@ -52,7 +46,6 @@ namespace Know_Your_Nation_Speedy.Controllers
             await _db.UsersEntries.AddAsync(value);
             await _db.SaveChangesAsync();
         }
-
         // PUT api/values/5
         [HttpPut("{id}")]
         public async Task Put(int id, [FromBody] Users value)
@@ -61,12 +54,10 @@ namespace Know_Your_Nation_Speedy.Controllers
             entry = value;
             await _db.SaveChangesAsync();
         }
-
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEntry([FromRoute]int id)
         {
-
             var entry = await _db.UsersEntries.SingleOrDefaultAsync(m => m.UsersId == id);
             if (entry == null)
             {
@@ -79,4 +70,3 @@ namespace Know_Your_Nation_Speedy.Controllers
         }
     }
 }
-
