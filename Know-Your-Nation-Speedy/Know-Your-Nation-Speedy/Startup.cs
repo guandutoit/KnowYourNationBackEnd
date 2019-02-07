@@ -48,7 +48,6 @@ namespace Know_Your_Nation_Speedy
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseCors("CorsPolicy");
-            // UpdateDatabase(app);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
