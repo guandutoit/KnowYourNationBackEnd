@@ -39,7 +39,8 @@ namespace Know_Your_Nation_Speedy
 
             var connection = @"Server=dev.retrotest.co.za;Database=ereader;User Id=group4;Password=3bHNuE8&rvG+99U2;";
             services.AddDbContext<MyDbContext>
-                (options => options.UseSqlServer(connection)); //other option: UseSqlServer(Configuration.GetSection(connection))
+                (options => options.UseSqlServer(connection));  //TODO: other option: 
+                                                                //UseSqlServer(Configuration.GetSection(connection))
             services.AddSingleton(Configuration);
         }
 
