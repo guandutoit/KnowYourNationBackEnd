@@ -21,6 +21,7 @@ namespace Know_Your_Nation_Speedy
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // Register the Swagger generator, defining 1 or more Swagger documents
@@ -28,7 +29,6 @@ namespace Know_Your_Nation_Speedy
             {
                 c.SwaggerDoc("v1", new Info { Title = "My DB API", Version = "v1" });
             });
-
 
             var connection = @"Server=dev.retrotest.co.za;Database=ereader;User Id=group4;Password=3bHNuE8&rvG+99U2;";
             services.AddDbContext<MyDbContext>
@@ -46,6 +46,11 @@ namespace Know_Your_Nation_Speedy
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
             // specifying the Swagger JSON endpoint.
