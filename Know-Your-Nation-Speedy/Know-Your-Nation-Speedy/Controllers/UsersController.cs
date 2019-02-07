@@ -62,7 +62,6 @@ namespace Know_Your_Nation_Speedy.Controllers
             if (entry == null)
             {
                 return NotFound();
-
             }
             _db.UsersEntries.Remove(entry);
             await _db.SaveChangesAsync();
