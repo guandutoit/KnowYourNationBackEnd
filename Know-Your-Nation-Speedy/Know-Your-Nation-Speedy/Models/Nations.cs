@@ -14,7 +14,7 @@ namespace Know_Your_Nation_Speedy.Models
         public int NationsId { get; set; }
         public string Name { get; set; }
         public string ShortDescription { get; set; }
-        public HashSet<Articles> Article { get; set; }
+        public ICollection<Articles> Article { get; set; }
         public void Initialize()
         {
             Article = new HashSet<Articles>();

@@ -20,13 +20,13 @@ namespace Know_Your_Nation_Speedy.Models
         public string PhoneNumber { get; set; }
         public Memberships Membership { get; set; }
 
-        public HashSet<ArticlesRead> ArticleRead { get; set; }
-        public HashSet<BooksRead> BookRead { get; set; }
-        public HashSet<ComicsRead> ComicRead { get; set; }
-        public HashSet<AnimationsWatched> AnimationWatched { get; set; }
-        public HashSet<Donations> Donation { get; set; }
-        public HashSet<Orders> Order { get; set; }
-        public HashSet<UserEvents> UserEvent { get; set; }
+        public ICollection<ArticlesRead> ArticleRead { get; set; }
+        public ICollection<BooksRead> BookRead { get; set; }
+        public ICollection<ComicsRead> ComicRead { get; set; }
+        public ICollection<AnimationsWatched> AnimationWatched { get; set; }
+        public ICollection<Donations> Donation { get; set; }
+        public ICollection<Orders> Order { get; set; }
+        public ICollection<UserEvents> UserEvent { get; set; }
         public void Initialise()
         {
             ArticleRead = new HashSet<ArticlesRead>();

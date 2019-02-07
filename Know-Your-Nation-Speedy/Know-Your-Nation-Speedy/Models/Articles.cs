@@ -18,7 +18,7 @@ namespace Know_Your_Nation_Speedy.Models
         public string Description { get; set; }
         public bool InRotation { get; set; }
         public Nations Nation { get; set; }
-        public HashSet<ArticlesRead> ArticleRead { get; set; }
+        public ICollection<ArticlesRead> ArticleRead { get; set; }
         public void Initialise()
         {
             ArticleRead = new HashSet<ArticlesRead>();

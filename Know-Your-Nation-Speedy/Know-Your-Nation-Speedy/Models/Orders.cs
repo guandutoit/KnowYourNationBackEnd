@@ -15,7 +15,7 @@ namespace Know_Your_Nation_Speedy.Models
         public string TrackingNumber { get; set; }
         public string AddressToDeliever { get; set; }
         public Users User { get; set; }
-        public HashSet<ProductOrders> ProductOrder { get; set; }
+        public ICollection<ProductOrders> ProductOrder { get; set; }
         public void Initialise()
         {
             ProductOrder = new HashSet<ProductOrders>();

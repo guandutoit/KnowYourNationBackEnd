@@ -19,7 +19,7 @@ namespace Know_Your_Nation_Speedy.Models
         public double Price { get; set; }
         public string Type { get; set; }
         public int QuantityOnHand { get; set; }
-        public HashSet<ProductOrders> ProductOrder { get; set; }
+        public ICollection<ProductOrders> ProductOrder { get; set; }
          public void Initialise()
         {
             ProductOrder = new HashSet<ProductOrders>();

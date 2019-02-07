@@ -16,7 +16,7 @@ namespace Know_Your_Nation_Speedy.Models
         public string FileLocation { get; set; }
         public string CoverImageLocation { get; set; }
         public string Description { get; set; }
-        public HashSet<BooksRead> BookRead { get; set; }
+        public ICollection<BooksRead> BookRead { get; set; }
         public void Initialise()
         {
             BookRead = new HashSet<BooksRead>();

@@ -16,7 +16,7 @@ namespace Know_Your_Nation_Speedy.Models
         public string  Description{ get; set; }
         public string Address { get; set; }
         public DateTime Date { get; set; }
-        public HashSet<UserEvents> UserEvent { get; set; }
+        public ICollection<UserEvents> UserEvent { get; set; }
         public void Initialise()
         {
             UserEvent = new HashSet<UserEvents>();
